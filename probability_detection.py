@@ -1,8 +1,6 @@
 # Calculating Probability of Detection for a Range of Civilizations #
 #  Drake equation : N = R * fp * ne * fl * fi * fc * L
-
-
-
+#  ===========================================================================
 from random import randint
 from collections import Counter
 import numpy
