@@ -34,7 +34,7 @@ for num_civs in range(2, MAX_CIVS + 2, CIV_STEP_SIZE):
     x.append(civs_per_vol)
     y.append(prob)
 
-
+#  Predictive Formula
     coefficients = numpy.polyfit(x, y, 4)
     p = numpy.poly1d(coefficients)
     print("\n{}".format(p))
