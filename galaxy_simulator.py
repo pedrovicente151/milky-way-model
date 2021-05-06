@@ -7,7 +7,7 @@ NUM_CIVS = 15600000
 
 root = tk.Tk()
 root.title("Milky Way Galaxy")
-c = tk.Canvas(root, width=1000, height=1000, bg='black')
+c = tk.Canvas(root, width=1000, height=800, bg='black')
 c.grid()
 c.configure(scrollregion=(-500, -400, 500, 400))
 
@@ -61,13 +61,13 @@ def spirals(b, r, rot_fac, fuz_fac, arm):
     arm: spiral arm (0 = main arm, 1 = trailing stars
     """
     spiral_starts = []
-    fuzz = int((0.030 * abs(r)))  # Random shift start locations
+    fuzz = int(0.030 * abs(r))  # Random shift start locations
     theta_max_degrees = 520
     for i in range(theta_max_degrees):
         theta = math.radians(i)
-        x = r * math.exp(b * theta) * math.cos(theta + math.pi + rot_fac) \
+        x = r * math.exp(b * theta) * math.cos(theta + math.pi * rot_fac) \
             + randint(-fuzz, fuzz) * fuz_fac
-        y = r * math.exp(b * theta) * math.sin(theta + math.pi + rot_fac) \
+        y = r * math.exp(b * theta) * math.sin(theta + math.pi * rot_fac) \
             + randint(-fuzz, fuzz) * fuz_fac
 
         spiral_starts.append((x, y))
@@ -85,7 +85,7 @@ def star_haze(disc_radius_scaled, density):
     """Randomly distribute faint tkinter starts in galactic disc.
 
     disc_radius = galactic disc radius scaled to radio bubble diameters
-    density = multipllier to vary number of starts posted
+    density = multiplier to vary number of starts posted
     """
     for i in range(0, disc_radius_scaled * density):
         x, y = random_polar_coordinates(disc_radius_scaled)
@@ -98,14 +98,14 @@ def main():
     detection_prob = detect_prob(disc_vol_scaled)
 
     # build 4 main spiral arms & 4 trailing arms
-    spirals(-0.3, disc_radius_scaled, 2, 1.5, 0)
-    spirals(-0.3, disc_radius_scaled, 1.91, 1.5, 0)
-    spirals(-0.3, -disc_radius_scaled, 2, 1.5, 0)
-    spirals(-0.3, -disc_radius_scaled, -2.09, 1.5, 1)
-    spirals(-0.3, -disc_radius_scaled, 0.5, 1.5, 0)
-    spirals(-0.3, -disc_radius_scaled, 0.4, 1.5, 1)
-    spirals(-0.3, -disc_radius_scaled, -0.5, 1.5, 0)
-    spirals(-0.3, -disc_radius_scaled, -0.6, 1.5, 1)
+    spirals(b=-0.3, r=disc_radius_scaled, rot_fac=2, fuz_fac=1.5, arm=0)
+    spirals(b=-0.3, r=disc_radius_scaled, rot_fac=1.91, fuz_fac=1.5, arm=1)
+    spirals(b=-0.3, r=-disc_radius_scaled, rot_fac=2, fuz_fac=1.5, arm=0)
+    spirals(b=-0.3, r=-disc_radius_scaled, rot_fac=-2.09, fuz_fac=1.5, arm=1)
+    spirals(b=-0.3, r=-disc_radius_scaled, rot_fac=0.5, fuz_fac=1.5, arm=0)
+    spirals(b=-0.3, r=-disc_radius_scaled, rot_fac=0.4, fuz_fac=1.5, arm=1)
+    spirals(b=-0.3, r=-disc_radius_scaled, rot_fac=-0.5, fuz_fac=1.5, arm=0)
+    spirals(b=-0.3, r=-disc_radius_scaled, rot_fac=-0.6, fuz_fac=1.5, arm=1)
     star_haze(disc_radius_scaled, 8)
 
     c.create_text(-455, -360, fill='white', anchor='w',

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcf410e7-5c64-4f40-86b1-626c8b871b8b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/galaxy_simulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/galaxy_simulator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
