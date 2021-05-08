@@ -119,7 +119,7 @@ def main():
     if SCALE == 225:
         c.create_rectangle(115, 75, 116, 76, fill='red', outline='')
         c.create_text(118, 72, fill='red', anchor='w',
-                      text="<---------- Earth's Radio Bubble")
+                      text="<------------ Earth's Radio Bubble")
 
     root.mainloop()
 
