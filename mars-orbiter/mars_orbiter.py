@@ -76,5 +76,101 @@ class Satellite(pg.sprite.Sprite):
         pg.draw.line(self.background, WHITE, last_center, (self.x, self.y))
 
     def update(self):
-        """Update satellite object"""
-        pass
+        """Update satellite object during game."""
+        self.check_keys()
+        self.rotate()
+        self.path()
+        self.rect.center = (self.x, self.y)
+
+        if self.dx == 0 and self.dy == 0:
+            self.image = self.image_crash
+            self.image.set_colorkey(BLACK)
+
+
+class Planet(pg.sprite.Sprite):
+
+    def __init__(self):
+        super().__init__()
+        self.image_mars = pg.image.load('mars.png').convert()
+        self.image_water = pg.image.load('mars_water.png').convert()
+        self.image_copy = pg.transform.scale(self.image_mars, (100, 100))
+        self.image_copy.set_colorkey(BLACK)
+        self.rect = self.image_copy.get_rect()
+        self.image = self.image_copy
+        self.mass = 2000
+        self.x = 400
+        self.y = 320
+        self.rect.center = (self.x, self.y)
+        self.angle = math.degrees(0)
+        self.rotate_by = math.degrees(0.01)
+
+    def rotate(self):
+        """Rotate the planet image with each game loop."""
+        last_center = self.rect.center
+        self.image = pg.transform.rotate(self.image_copy, self.angle)
+        self.rect = self.image.get_rect()
+        self.rect.center = last_center
+        self.angle += self.rotate_by
+
+    def gravity(self, satellite):
+        """Calculate impact of gravity on satellite."""
+        G = 1.0
+        dist_x = self.x - satellite.x
+        dist_y = self.y - satellite.y
+        distance = math.hypot(dist_x, dist_y)
+
+        dist_x /= distance
+        dist_y /= distance
+
+        force = G * (satellite.mass * self.mass) / (math.pow(distance, 2))
+        satellite.dx += (dist_x * force)
+        satellite.dy += (dist_y * force)
+
+
+def calc_eccentricity(dist_list):
+    """Calculate & return eccentricity from list of radii."""
+    apoapsis = max(dist_list)
+    periapsis = min(dist_list)
+    eccentricity = (apoapsis - periapsis) / (apoapsis + periapsis)
+    return eccentricity
+
+
+def instruct_label(screen, text, color, x, y):
+    """Take screen, list of strings, color, & origin & render text to screen."""
+    instruct_font = pg.font.SysFont(None, 25)
+    line_spacing = 22
+    for index, line in enumerate(text):
+        label = instruct_font.render(line, True, color, BLACK)
+        screen.blit(label, (x, y + index * line_spacing))
+
+
+def box_label(screen, text, dimensions):
+    """Make fixed-size label on screen, text & left, top, width, height."""
+    readout_font = pg.font.SysFont(None, 27)
+    base = pg.Rect(dimensions)
+    pg.draw.rect(screen, WHITE, base, 0)
+    label = readout_font.render(text, True, BLACK)
+    label_rect = label.get_rect(center=base.center)
+    screen.blit(label, label_rect)
+
+
+def mapping_on(planet):
+    """Show soil moisture image of planet."""
+    last_center = planet.rect.center
+    planet.image_copy = pg.transform.scale(planet.image_water, (100, 100))
+    planet.image_copy.set_colorkey(BLACK)
+    planet.rect = planet.image_copy.get_rect()
+    planet.rect.center = last_center
+
+
+def mapping_off(planet):
+    """Restore normal planet image."""
+    planet.image_copy = pg.transform.scale(planet.image_mars, (100, 100))
+    planet.image_copy.set_colorkey(BLACK)
+
+
+def cast_shadow(screen):
+    """Add optional terminator & shadow behind planet to screen."""
+    shadow = pg.Surface((400, 100), flags=pg.SRCALPHA)
+    shadow.fill((0, 0, 0, 210))
+    screen.blit(shadow, (0, 270))
