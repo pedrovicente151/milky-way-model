@@ -249,6 +249,68 @@ def main():
                 if event.type == pg.KEYDOWN and event.key == pg.K_m:
                     mapping_on(planet)
 
+        # Get heading & distance to planet & apply gravity
+        sat.locate(planet)
+        planet.gravity(sat)
 
-                    
+        # Calculate orbital eccentricity
+        if tick_count % (eccentricity_calc_interval * fps) == 0:
+            eccentricity = calc_eccentricity(dist_list)
+            dist_list = []
+
+        # Re-blit background for drawing command - prevents clearing path
+        screen.blit(background, (0, 0))
+
+        # Fuel/Altitude fail conditions
+        if sat.fuel <= 0:
+            instruct_label(screen, ['Fuel Depleted!'], RED, 340, 195)
+            sat.fuel = 0
+            sat.dx = 2
+        elif sat.distance <= 68:
+            instruct_label(screen, ['Atmospheric Entry!', RED, 320, 195])
+            sat.dx = 0
+            sat.dy = 0
+
+        # Enable mapping functionality
+        if eccentricity < 0.05 and sat.distance >= 69 and sat.distance <= 120:
+            map_instruct = ['Press & hold M to map soil moisture']
+            instruct_label(screen, map_instruct, LT_BLUE, 250, 175)
+            mapping_enabled = True
+        else:
+            mapping_enabled = False
+
+        planet_sprite.update()
+        planet_sprite.draw(screen)
+        sat_sprite.update()
+        sat_sprite.draw(screen)
+
+        # Display intro text for 15 seconds.
+        if pg.time.get_ticks() <= 15000:
+            instruct_label(screen, intro_text, GREEN, 145, 100)
+
+        box_label(screen, 'Dx', (70, 20, 75, 20))
+        box_label(screen, 'Dy', (150, 20, 80 ,20))
+        box_label(screen, 'Altitude', (240, 20, 160, 20))
+        box_label(screen, 'Fuel', (410, 20, 160, 20))
+        box_label(screen, 'Eccentricity', (580, 20, 150, 20))
+
+        box_label(screen, '{:.1f}'.format(sat.dx), (70, 50, 75, 20))
+        box_label(screen, '{:1f}'.format(sat.dy), (150, 50, 80, 20))
+        box_label(screen, '{:1f}'.format(sat.distance), (240, 50, 160, 20))
+        box_label(screen, '{}'.format(sat.fuel), (410, 50, 160, 20))
+        box_label(screen, '{:.8f}'.format(eccentricity), (580, 50, 150, 20))
+
+        instruct_label(screen, instruct_text1, WHITE, 10, 575)
+        instruct_label(screen, instruct_text2, WHITE, 570, 510)
+
+        # Add terminator & border
+        cast_shadow(screen)
+        pg.draw.rect(screen, WHITE, (1, 1, 798, 643), 1)
+
+        pg.display.flip()
+
+if __name__ == '__main__':
+    main()
+
+
 
