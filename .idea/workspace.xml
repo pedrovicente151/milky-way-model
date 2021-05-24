@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dcf410e7-5c64-4f40-86b1-626c8b871b8b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/mars-orbiter/thrust_audio.ogg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mars-orbiter/mars_orbiter.py" beforeDir="false" afterPath="$PROJECT_DIR$/mars-orbiter/mars_orbiter.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,6 +37,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/mars-orbiter" />
       <recent name="$PROJECT_DIR$/volcano-simulator" />
     </key>
   </component>

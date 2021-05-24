@@ -17,7 +17,7 @@ class Satellite(pg.sprite.Sprite):
         super().__init__()
         self.background = background
         self.image_sat = pg.image.load("satellite.png").convert()
-        self.image_crash = pg.image.load("satellite.crash_40x33.png").convert()
+        self.image_crash = pg.image.load("satellite_crash_40x33.png").convert()
         self.image = self.image_sat
         self.rect = self.image.get_rect()
         self.image.set_colorkey(BLACK)
@@ -242,6 +242,7 @@ def main():
                 screen = pg.display.set_mode((800, 645))  # Exit Full Screen
             elif event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
                 background.fill(BLACK)
+                # main()  # Restart Game
             elif event.type == pg.KEYUP:
                 sat.thrust.stop()
                 mapping_off(planet)
@@ -267,7 +268,7 @@ def main():
             sat.fuel = 0
             sat.dx = 2
         elif sat.distance <= 68:
-            instruct_label(screen, ['Atmospheric Entry!', RED, 320, 195])
+            instruct_label(screen, ['Atmospheric Entry!'], RED, 320, 195)
             sat.dx = 0
             sat.dy = 0
 
