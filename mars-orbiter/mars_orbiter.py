@@ -183,7 +183,7 @@ def main():
 
     # Set up display:
     os.environ['SDL_VIDEO_WINDOW_POS'] = '700, 100'  # Set game window origin
-    screen = pg.display.set_mode((800, 645), pg.FULLSCREEN)
+    screen = pg.display.set_mode((800, 645))
     pg.display.set_caption("Mars Orbiter")
     background = pg.Surface(screen.get_size())
 
@@ -290,7 +290,7 @@ def main():
             instruct_label(screen, intro_text, GREEN, 145, 100)
 
         box_label(screen, 'Dx', (70, 20, 75, 20))
-        box_label(screen, 'Dy', (150, 20, 80 ,20))
+        box_label(screen, 'Dy', (150, 20, 80, 20))
         box_label(screen, 'Altitude', (240, 20, 160, 20))
         box_label(screen, 'Fuel', (410, 20, 160, 20))
         box_label(screen, 'Eccentricity', (580, 20, 150, 20))
