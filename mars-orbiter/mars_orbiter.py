@@ -210,5 +210,45 @@ def main():
         'Escape = Exit Full Screen'
     ]
 
-    # Instantiate
-    pass
+    # Instantiate Planet and Satellite objects
+    planet = Planet()
+    planet_sprite = pg.sprite.Group(planet)
+    sat = Satellite(background)
+    sat_sprite = pg.sprite.Group(sat)
+
+    dist_list = []
+    eccentricity = 1
+    eccentricity_calc_interval = 5
+
+    # Time
+    clock = pg.time.Clock()
+    fps = 30
+    tick_count = 0
+
+    mapping_enabled = False
+
+    running = True
+    while running:
+        clock.tick(fps)
+        tick_count += 1
+        dist_list.append(sat.distance)
+
+        # get keyboard input
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                running = False
+
+            elif event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE:
+                screen = pg.display.set_mode((800, 645))  # Exit Full Screen
+            elif event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
+                background.fill(BLACK)
+            elif event.type == pg.KEYUP:
+                sat.thrust.stop()
+                mapping_off(planet)
+            elif mapping_enabled:
+                if event.type == pg.KEYDOWN and event.key == pg.K_m:
+                    mapping_on(planet)
+
+
+                    
+

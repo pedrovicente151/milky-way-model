@@ -39,7 +39,7 @@
       <recent name="$PROJECT_DIR$/volcano-simulator" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.mars_orbiter">
+  <component name="RunManager" selected="Python.tvashtar">
     <configuration name="galaxy_simulator" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="pythonWiz" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -126,8 +126,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.mars_orbiter" />
         <item itemvalue="Python.tvashtar" />
+        <item itemvalue="Python.mars_orbiter" />
         <item itemvalue="Python.galaxy_simulator" />
       </list>
     </recent_temporary>
