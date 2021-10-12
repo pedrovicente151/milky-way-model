@@ -46,6 +46,10 @@ class DiscordBot:
 
     pprint(all_coins)
 
+    def __init__(self):
+        self.all_coins = CMC("078f23d5-6746-4863-b078-3cd159a7a6c5").get_ten_coins()
+
+
     @client.event
     async def on_ready():
         print("Crypton online.")
@@ -67,7 +71,7 @@ class DiscordBot:
                        f"D).region - Check Crypto's location availability.")
 
     @client.command(aliases=['value', 'PRICE'])
-    async def price(ctx, *, question):
+    async def price(self, ctx, *, question):
         """Returns requested crypto price on Discord
         """
 
@@ -76,7 +80,7 @@ class DiscordBot:
 
         crypto_name = str(question).lower()[:-1].capitalize()
 
-        for coin in all_coins:
+        for coin in self.all_coins:
             if coin['name'] == crypto_name:
                 crypto_price = coin['quote']['USD']['price']
 
@@ -87,5 +91,8 @@ class DiscordBot:
                                f'C).where - Where to buy crypto.\n'
                                f"D).region - Check Crypto's location availability.")
 
+    @client.command()
+    async def what(ctx,):
+
     #  Discord API Token
-    client.run('ODk1ODQxNTYxOTQ5MTE4NTI0.YV-beA.Jtvgp-hsb_H9Wudt0j16SUe-cIg')
+    client.run('ODk1ODQxNTYxOTQ5MTE4NTI0.YV-beA.76iZ_q91nNI2OoWSmefOniGUiUU')

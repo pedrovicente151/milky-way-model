@@ -50,12 +50,13 @@ class DiscordBot:
     async def on_ready():
         print("Crypton online.")
 
-    @client.command(aliases=['CRYPTON', 'bot', 'crypto', 'hi', "Hi", "hello", "Hello"])
+    @client.command(aliases=['CRYPTON', 'bot', 'crypto', 'hi', "Hi", "hello", "Hello", "price for "])
     async def crypton(ctx):
         await ctx.send(f'==========================================\n'
                        f'Welcome to Crypton! This is how bot works:\n'
                        f'----------------------------------------------\n'
-                       f'1. Select a discord dot command (below).\n'
+                       f'For ONLY checking the prices:'
+                       f'1. Write ".price ".\n'
                        f"2. Use the crypto's name.\n"
                        f"3. Use a question mark after crypto's name\n"
                        f'Example: .price dogecoin?\n'
@@ -87,5 +88,28 @@ class DiscordBot:
                                f'C).where - Where to buy crypto.\n'
                                f"D).region - Check Crypto's location availability.")
 
+    @client.command()
+    async def what(ctx):
+        await ctx.send(f"Select an option:\n"
+                       f"https://www.forbes.com/sites/nextavenue/2021/06/18/cryptocurrency-101-all-you-really-need-to-know/?sh=3671df4d5b53\n"
+                       f"https://medium.com/coinmonks/crypto-in-a-nutshell-for-beginners-cryptocurrency-101-in-2021-365c3e56fb84\n"
+                       f"https://www.investopedia.com/terms/c/cryptocurrency.asp\n"
+                       f"https://www.youtube.com/watch?v=Mvrq8hLjcRk")
+
+    @client.command(aliases=['buy', 'Buy', "BUY", "Where"])
+    async def where(ctx):
+        await ctx.send(f"https://www.investopedia.com/best-crypto-exchanges-5071855\n"
+                       f"https://www.coinbase.com/partner/Investopedia?clickId=3FY31P2LGxyIT0l2t-RrFXUXUkBXO5V5rSnm2A0&utm_source=impact&utm_medium=growthp&utm_campaign=rt_p_m_w_d_acq_imp_gro_aff_Dotdash&utm_content=1156380&utm_creative=Promo%20Code%20%2410%20BTC%20Investopedia&irgwc=1\n"
+                       f"https://cash.app/\n"
+                       f"https://bisq.network/")
+
+    @client.command()
+    async def region(ctx):
+        await ctx.send(f"Canada: https://www.canada.ca/en/revenue-agency/programs/about-canada-revenue-agency-cra/compliance/digital-currency/cryptocurrency-guide.html\n"
+                       f"China: http://www.gov.cn/xinwen/2021-05/21/content_5610192.htm\n"
+                       f"USA: https://www.irs.gov/businesses/small-businesses-self-employed/virtual-currencies\n"
+                       f"U.K: https://www.gov.uk/government/publications/tax-on-cryptoassets\n"
+                       f"EU: https://www.oecd.org/tax/tax-policy/taxing-virtual-currencies-an-overview-of-tax-treatments-and-emerging-tax-policy-issues.pdf")
+
     #  Discord API Token
-    client.run('ODk1ODQxNTYxOTQ5MTE4NTI0.YV-beA.cleyX6AhHwsaNic54SPRHWy6yj0')
+    client.run('ODk1ODQxNTYxOTQ5MTE4NTI0.YV-beA.76iZ_q91nNI2OoWSmefOniGUiUU')
