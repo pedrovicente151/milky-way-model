@@ -3,8 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="dcf410e7-5c64-4f40-86b1-626c8b871b8b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CryptoBot/crypton.py" beforeDir="false" afterPath="$PROJECT_DIR$/CryptoBot/crypton.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crypto_bot/crypton.py" beforeDir="false" afterPath="$PROJECT_DIR$/crypto_bot/crypton.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CryptoBot/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/crypto_bot/CryptoBot/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CryptoBot/.idea/CryptoBot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/crypto_bot/CryptoBot/.idea/CryptoBot.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CryptoBot/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/crypto_bot/CryptoBot/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CryptoBot/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/crypto_bot/CryptoBot/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CryptoBot/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/crypto_bot/CryptoBot/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CryptoBot/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/crypto_bot/CryptoBot/bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CryptoBot/crypton.py" beforeDir="false" afterPath="$PROJECT_DIR$/crypto_bot/CryptoBot/crypton.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CryptoBot/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/crypto_bot/CryptoBot/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,12 +36,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Science Marketing Email Newsletter for Student Groups/Email 1 - Intro/Note.txt" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Pedro\PycharmProjects\python-projects\CryptoBot" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Pedro\PycharmProjects\python-projects\crypto_bot" />
       <recent name="$PROJECT_DIR$/mars-orbiter" />

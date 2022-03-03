@@ -55,7 +55,7 @@ class DiscordBot:
         await ctx.send(f'==========================================\n'
                        f'Welcome to Crypton! This is how bot works:\n'
                        f'----------------------------------------------\n'
-                       f'For ONLY checking the prices:'
+                       f'For ONLY checking the prices:\n'
                        f'1. Write ".price ".\n'
                        f"2. Use the crypto's name.\n"
                        f"3. Use a question mark after crypto's name\n"
@@ -65,7 +65,8 @@ class DiscordBot:
                        f"A).price - Check Crypto's price.\n"
                        f'B).what - Learn about currency.\n'
                        f'C).where - Where to buy crypto.\n'
-                       f"D).region - Check Crypto's location availability.")
+                       f"D).region - Check Crypto's location availability.\n"
+                       f"E).ten - Display Top 10 Cryptos with prices.")
 
     @client.command(aliases=['value', 'PRICE'])
     async def price(ctx, *, question):
@@ -95,6 +96,11 @@ class DiscordBot:
                        f"https://medium.com/coinmonks/crypto-in-a-nutshell-for-beginners-cryptocurrency-101-in-2021-365c3e56fb84\n"
                        f"https://www.investopedia.com/terms/c/cryptocurrency.asp\n"
                        f"https://www.youtube.com/watch?v=Mvrq8hLjcRk")
+        await ctx.send(f"What next?: \n"
+                       f"A).price - Check Crypto's price.\n"
+                       f'B).what - Learn about currency.\n'
+                       f'C).where - Where to buy crypto.\n'
+                       f"D).region - Check Crypto's location availability.")
 
     @client.command(aliases=['buy', 'Buy', "BUY", "Where"])
     async def where(ctx):
@@ -102,6 +108,11 @@ class DiscordBot:
                        f"https://www.coinbase.com/partner/Investopedia?clickId=3FY31P2LGxyIT0l2t-RrFXUXUkBXO5V5rSnm2A0&utm_source=impact&utm_medium=growthp&utm_campaign=rt_p_m_w_d_acq_imp_gro_aff_Dotdash&utm_content=1156380&utm_creative=Promo%20Code%20%2410%20BTC%20Investopedia&irgwc=1\n"
                        f"https://cash.app/\n"
                        f"https://bisq.network/")
+        await ctx.send(f"What next?: \n"
+                       f"A).price - Check Crypto's price.\n"
+                       f'B).what - Learn about currency.\n'
+                       f'C).where - Where to buy crypto.\n'
+                       f"D).region - Check Crypto's location availability.")
 
     @client.command()
     async def region(ctx):
@@ -110,6 +121,36 @@ class DiscordBot:
                        f"USA: https://www.irs.gov/businesses/small-businesses-self-employed/virtual-currencies\n"
                        f"U.K: https://www.gov.uk/government/publications/tax-on-cryptoassets\n"
                        f"EU: https://www.oecd.org/tax/tax-policy/taxing-virtual-currencies-an-overview-of-tax-treatments-and-emerging-tax-policy-issues.pdf")
+        await ctx.send(f"What next?: \n"
+                       f"A).price - Check Crypto's price.\n"
+                       f'B).what - Learn about currency.\n'
+                       f'C).where - Where to buy crypto.\n'
+                       f"D).region - Check Crypto's location availability.")
+
+    @client.command()
+    async def ten(ctx):
+        cmc = CMC("078f23d5-6746-4863-b078-3cd159a7a6c5")
+        all_coins = cmc.get_ten_coins()
+
+        top_coins = {}
+
+        for coin in all_coins:
+            crypto_price = coin['quote']['USD']['price']
+            crypto_name = coin['name']
+            new_price = round(crypto_price, 4)
+            top_coins[crypto_name] = new_price
+
+
+        await ctx.send(top_coins)
+        await ctx.send(f"What next?: \n"
+                       f"A).price - Check Crypto's price.\n"
+                       f'B).what - Learn about currency.\n'
+                       f'C).where - Where to buy crypto.\n'
+                       f"D).region - Check Crypto's location availability.\n"
+                       f"E).ten - Display Top 10 Cryptos with prices.")
+
+
 
     #  Discord API Token
-    client.run('ODk1ODQxNTYxOTQ5MTE4NTI0.YV-beA.76iZ_q91nNI2OoWSmefOniGUiUU')
+    #  Token needs to be changed every time file is pushed to Github
+    client.run('ODk1ODQxNTYxOTQ5MTE4NTI0.YV-beA.WzYifW0WYXmS8IjkMJEw_Fpj7YM')
