@@ -1,3 +1,4 @@
+#  https://www.twitch.tv/rocketsblackmarket
 
 def get_pkmn_info():
     evs_list = []
